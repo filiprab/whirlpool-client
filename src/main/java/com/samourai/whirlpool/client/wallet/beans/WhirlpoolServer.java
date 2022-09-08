@@ -1,23 +1,25 @@
 package com.samourai.whirlpool.client.wallet.beans;
 
 import java.util.Optional;
+
+import com.samourai.dex.config.DexConfigProvider;
 import org.bitcoinj.core.NetworkParameters;
 import org.bitcoinj.params.MainNetParams;
 import org.bitcoinj.params.TestNet3Params;
 
 public enum WhirlpoolServer {
   TESTNET(
-      "https://pool.whirl.mx:8081",
-      "http://y5qvjlxvbohc73slq4j4qldoegyukvpp74mbsrjosnrsgg7w5fon6nyd.onion",
-      TestNet3Params.get()),
+          DexConfigProvider.getInstance().getSamouraiConfig().getWhirlpoolServerTestnetClear(),
+          DexConfigProvider.getInstance().getSamouraiConfig().getBackendServerTestnetOnion(),
+          TestNet3Params.get()),
   INTEGRATION(
-      "https://pool.whirl.mx:8082",
-      "http://yuvewbfkftftcbzn54lfx3i5s4jxr4sfgpsbkvcflgzcvumyxrkopmyd.onion",
-      TestNet3Params.get()),
+          DexConfigProvider.getInstance().getSamouraiConfig().getWhirlpoolServerIntegrationClear(),
+          DexConfigProvider.getInstance().getSamouraiConfig().getWhirlpoolServerIntegrationOnion(),
+          TestNet3Params.get()),
   MAINNET(
-      "https://pool.whirl.mx:8080",
-      "http://udkmfc5j6zvv3ysavbrwzhwji4hpyfe3apqa6yst7c7l32mygf65g4ad.onion",
-      MainNetParams.get()),
+          DexConfigProvider.getInstance().getSamouraiConfig().getSorobanServerMainnetClear(),
+          DexConfigProvider.getInstance().getSamouraiConfig().getSorobanServerMainnetOnion(),
+          MainNetParams.get()),
   LOCAL_TESTNET("http://127.0.0.1:8080", "http://127.0.0.1:8080", TestNet3Params.get());
 
   private String serverUrlClear;
