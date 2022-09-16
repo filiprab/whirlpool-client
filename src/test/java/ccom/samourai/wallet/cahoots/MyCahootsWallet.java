@@ -55,9 +55,4 @@ public class MyCahootsWallet extends CahootsWallet {
     }
     return cahootsUtxos;
   }
-
-  @Override
-  public long fetchFeePerB() {
-    return 1;
-  }
 }
