@@ -43,9 +43,17 @@ public class AbstractWhirlpoolWalletTest extends AbstractTest {
     config = whirlpoolWallet.getConfig();
   }
 
+  protected String getSeedWords() {
+    return "all all all all all all all all all all all all";
+  }
+
+  protected String getPassphrase() {
+    return "whirlpool";
+  }
+
   protected WhirlpoolWallet computeWhirlpoolWallet() throws Exception {
-    String seedWords = "all all all all all all all all all all all all";
-    String passphrase = "whirlpool";
+    String seedWords = getSeedWords();
+    String passphrase = getPassphrase();
     byte[] seed = hdWalletFactory.computeSeedFromWords(seedWords);
 
     WhirlpoolWalletService whirlpoolWalletService = new WhirlpoolWalletService();
